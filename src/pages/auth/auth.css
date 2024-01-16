@@ -1,0 +1,95 @@
+.auth-container{
+    background-image: url(../../assets/images/-4-ans_frontend_assets.webp);
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-wrapper{
+    background-color: #fff;
+    color: #000;
+    padding: 2rem 4rem;
+    border-radius: 2px;
+}
+
+.logo-wrapper{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    font-size: 36px;
+    color: red;
+}
+.logo-description{
+    color: #636466;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+h2 {
+    padding: 20px;
+    margin: 0 0 30px;
+  }
+   .login-box {
+    padding: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    
+
+  }
+ .google-button img{
+    height: 20px;
+    width: 20px;
+
+ }
+ .google-button{
+    display: flex;
+align-items: center;
+justify-content: center;
+padding: 0.5rem;
+width: 290px;
+
+
+ }
+ .right{
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+ }
+ .fb-button img{
+    height: 30px;
+    width: 30px;
+ }
+ .fb-button{
+display: flex;
+align-items: center;
+justify-content: center;
+width: 290px;
+
+
+ }
+ .left{
+    width: 49%;
+ }
+ .language{
+    align-items: center;
+    border-bottom: 1px solid #dee0e1;
+    border-top: 1px solid #dee0e1;
+    display: flex;
+    font-size: 13px;
+    gap: 20px;
+    justify-content: center;
+    padding: 15px;
+}
+.login {
+    border-bottom: 1px solid #dee0e1;
+  
+}
+ 
