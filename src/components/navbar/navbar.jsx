@@ -14,17 +14,15 @@ import Popper from '@mui/material/Popper';
 import { useState } from 'react';
 
 function Navbar() {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+ 
 
-  const handleClick = (event:MouseEvent<HTMLElement>) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
-  };
 
-  const open = Boolean(anchorEl);
+
+
  
   
   
-  
+
 
     return (
         <Toolbar className="navbar" position='static'>
@@ -49,12 +47,8 @@ function Navbar() {
           <Box className='header-remain'>
             <Box className='header-avatar' ><Avatar/></Box>
             <LanguageIcon/>
-            <Button onClick={handleClick} >Add Question</Button>
-            <Popper id={id}  anchorEl={anchorEl}>
-  <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
-    The content of the Popper.
-  </Box>
-</Popper>
+            <Button  >Add Question</Button>
+     
           </Box>
 
       
