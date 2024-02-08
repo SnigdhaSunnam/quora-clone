@@ -1,25 +1,24 @@
 
-import { TextField, Box, TableFooter, Button } from '@mui/material';
+import { TextField, Box, TableFooter, Button, Modal } from '@mui/material';
 import './auth.css'
 import google from '../../assets/images/google icon.png';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import fbicon from '../../assets/images/Facebook-f_Logo-Blue-Logo.wine.svg';
 import Link from '@mui/material/Link';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
 import QuoraLogo from '../../assets/images/quora-logo.png';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import BottomNavigation from '@mui/material/BottomNavigation';
-import Typography from '@mui/material/Typography';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import SignupModal from '../../components/modal/modal';
+import authService from "../../service/authService";
 
 
 
 const Auth = () => {
     const [open, setOpen] = useState(false);
-    const handleClickOpen = () => {
+    const handleClickOpen = () => {  
         setOpen(true);
     };
     const handleClose = () => {
@@ -29,17 +28,38 @@ const Auth = () => {
         event.preventDefault();
         console.info('You clicked a breadcrumb.');
     }
-    const breadcrumbs = [
-        <Link underline="hover" key="1" color="inherit" href="/" onClick={handleClick}> About</Link>,
-        <Link underline="hover" key="2" color="inherit" href="/" onClick={handleClick}>Careers</Link>,
-        <Link underline="hover" key="3" color="inherit" href="/" onClick={handleClick}>Privacy</Link>,
-        <Link underline="hover" key="4" color="inherit" href="/" onClick={handleClick}> Terms</Link>,
-        <Link underline="hover" key="5" color="inherit" href="/" onClick={handleClick}>Contact</Link>,
-        <Link underline="hover" key="6" color="inherit" href="/" onClick={handleClick}>Languages</Link>,
-        <Link underline="hover" key="7" color="inherit" href="/" onClick={handleClick}>Your add choices</Link>,
-        <Link underline="hover" key="8" color="inherit" href="/material-ui/getting-started/installation/" onClick={handleClick}>Press</Link>,
-        <Typography key="9" color="text.primary">© Quora, Inc. 2024</Typography>,
-    ];
+    const breadcrumbItems = [{ text: 'About', href: '/' },{ text: 'Careers', href: '/' },{ text: 'Privacy', href: '/' },{ text: 'Terms', href: '/' },{ text: 'Contact', href: '/' },{ text: 'Languages', href: '/' },{ text: 'Your add choices', href: '/' }, { text: 'Press', href: '/material-ui/getting-started/installation/' }, ];
+    const breadcrumbs = breadcrumbItems.map((item, index) => (
+        <Link key={index} underline="hover" color="inherit" href={item.href} onClick={handleClick} > {item.text} </Link>
+    ));
+    const validationSignUpSchema = yup.object({
+        name:yup.string().trim().min(2,"Your name needs to be at least 2 characters long.").required("name is required"),
+        email:yup.string().email("The email address you entered is not valid.").required("email is required"),
+        password:yup.string().min(5, 'Password should be of minimum 5 characters length').required('Password is required').trim()
+});
+
+const formik = useFormik({
+    initialValues: {
+        name: '',
+        email: '',
+        password: '',
+    },
+    validationSchema: validationSignUpSchema,
+    onSubmit: (values) => {
+        alert(JSON.stringify(values, null, 2));
+        handleLogin(values)
+        
+    },
+
+})
+const handleLogin = (values) => {
+    authService.login(values.email, values.password).then((res) => {
+        localStorage.setItem('token', res?.data?.token)
+        setTimeout(() => {
+           
+        }, 100);
+    })
+}
 
     return (
         <>
@@ -57,38 +77,22 @@ const Auth = () => {
                                     <Button className="google-button" variant="outlined" type='button'> <img src={google} ></img>Continue With Google  </Button>
                                     <Box><Button className="fb-button" variant="outlined" type='button'> <img src={fbicon} ></img>Continue With Google  </Button></Box>
                                     <Button variant="text" className="button-signUp" onClick={handleClickOpen}>Sign up with email</Button>
-                                    <Dialog className="dialog"
-                                        open={open}><DialogTitle>Sign Up</DialogTitle>
-                                        <DialogContent>
-                                            <Box className="dialog-signup-name" component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }}>
-                                         <label>Name</label><br />
-                                        <TextField required id="outlined-required" placeholder="your Email"  fullWidth/> 
-                                            </Box>
-                                            <Box className="dialog-signup-email" component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }}>
-                                            <label>Email</label><br />
-                                        <TextField required id="outlined-required" placeholder="your Email"  fullWidth/> 
-                                            </Box>
-                                        </DialogContent>
-                                        <DialogActions>
-                                            <Button onClick={handleClose}>Cancel</Button>
-                                            <Button type="submit">Next</Button>
-                                        </DialogActions>
-                                    </Dialog>
+                                    
                                 </Box>
                                 <Box className="right">
                                     <h2 className='login-title'>Login</h2>
                                     <Box component="form" sx={{ '& .MuiTextField-root': { my: 1, width: '35ch' }, }} >
                                         <label>Email</label><br />
-                                        <TextField required id="outlined-required" placeholder="your Email" />
+                                        <TextField required id="outlined-required" placeholder="your Email" name="email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur} error={formik.touched.email && Boolean(formik.errors.email)} helperText={formik.touched.email && formik.errors.email} />
                                     </Box>
                                     <Box component="form" sx={{ '& .MuiTextField-root': { my: 1, width: '35ch' }, }}>
                                         <label>Password</label>
                                         <br></br>
-                                        <TextField id="outlined-password-input" type="password" autoComplete="current-password" placeholder="your password" />
+                                        <TextField id="outlined-password-input" type="password" autoComplete="current-password" placeholder="your password"  name="password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur} error={formik.touched.password && Boolean(formik.errors.password)} helperText={formik.touched.password && formik.errors.password} />
                                     </Box>
                                     <Box className="forget-login-button">
                                         <Link>Forgot Password?</Link>
-                                        <Button label="Login" size="medium" variant="contained">Login</Button>
+                                        <Button label="Login" size="medium" variant="contained" type="Button" onClick={formik.handleSubmit}>Login</Button>
                                     </Box>
                                 </Box>
                             </Box>
@@ -97,6 +101,15 @@ const Auth = () => {
                         <BottomNavigation className="about-quora">
                             <Breadcrumbs separator="•" aria-label="breadcrumb"> {breadcrumbs}</Breadcrumbs>
                         </BottomNavigation>
+                        <Modal
+                            open={open}
+                            onClose={handleClose}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                        >
+                            <SignupModal handleClose={handleClose}/>
+                        </Modal>
+                        
                     </Box>
                 </Box>
             </Box>
