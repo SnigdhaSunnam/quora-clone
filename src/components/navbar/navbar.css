@@ -65,18 +65,19 @@ cursor: pointer;
     color:#b92b27;
 }
 
-.header-remain > .MuiButton-root {
+
+.add-question{
+    padding: 10px !important;
     color: white;
     margin-left: 25px;
     text-transform: inherit;
-    background-color: #8f1f1b;
+    background-color: #b92b27;
     cursor: pointer;
     border-radius: 20px;
-
 }
-.header-remain > .MuiButton-root :hover{
-    color: #8f1f1b;
+
+.add-question :hover{
+    color: #fff;
     background-color: #b92b27;
-  
-
 }
+

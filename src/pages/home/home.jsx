@@ -1,12 +1,16 @@
 import '../home/home.css';
 import { Box } from '@mui/material';
 import Navbar from '../../components/navbar/navbar';
-import Sidebar from '../../components/sidebar/sidebar'
+import Sidebar from '../../components/sidebar/sidebar';
+import Feed from '../../components/feed/feed';
 
 
 function Home() {
   return <Box className = 'home' ><Navbar />
-          
+       <Box className ='quora-content'>
+        <Sidebar /> 
+       <Feed />
+       </Box>
   </Box>;
   
 
