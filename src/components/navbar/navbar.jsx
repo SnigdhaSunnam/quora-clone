@@ -17,6 +17,8 @@ import { deepOrange} from '@mui/material/colors';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { Tab } from '@mui/material';
+
 
 const style = {
   position: 'absolute',
@@ -34,6 +36,14 @@ function Navbar() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  
+  const [value, setValue] = React.useState('1');
+
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
+
+
  
 
   return (
@@ -73,9 +83,22 @@ function Navbar() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className = 'modal-title'>
+        <Box value={value}>
+  <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+    <Box onChange={handleChange} aria-label="lab API tabs example">
+      <Tab label="Item One" value="1" />
+      <Tab label="Item Two" value="3" />
+      
+    </Box>
+  </Box>
+  <Box value="1">Item One</Box>
+  <Box value="2">Item Two</Box>
+  
+ 
+</Box>
         <IconButton onClick={handleClose} sx={{m:0.5}}> <CloseRoundedIcon /></IconButton>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-          <Button>Add Question</Button> 
+          <Button >Add Question</Button> 
           <Button>Create Post</Button> 
           </Typography>
           <Divider />

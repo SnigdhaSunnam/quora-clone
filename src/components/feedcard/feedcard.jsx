@@ -20,36 +20,20 @@ import FeedCardAvatar from '../../assets/feedCard-oneAvatar.jpeg';
 import '../feedcard/feedcard.css';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
-import { deepOrange} from '@mui/material/colors';
+import { deepOrange } from '@mui/material/colors';
 
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
-
-export default function RecipeReviewCard() {
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
+export default function Feedcard({ post }) {
   return (
-    <Card className='feedcard-oneAvatar' sx={{ minWidth: 500, width:700 }}>
+    <Card className='feedcard-oneAvatar' sx={{ minWidth: 500, width: 700, }}>
       <CardHeader
         avatar={
           <Avatar >
-             <img src={FeedCardAvatar } ></img>
+          {post.author.profileImage && 
+            <img src={post.author.profileImage} ></img>
+          }
+          {!post.author.profileImage && 
+            <span>{post.author.name[0]}</span>
+          }
           </Avatar>
         }
         action={
@@ -57,45 +41,25 @@ export default function RecipeReviewCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
+        title={post.author.name}
         subheader="September 14, 2016"
       />
-      <CardContent className='paellaDish'><img src={PaellaDish } ></img></CardContent>
-     
+      <CardContent className='paellaDish'><img src={post.images[0]} ></img></CardContent>
+
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the mussels,
-          if you like.
+        <Typography paragraph>{post.title}</Typography>
+        <Typography paragraph>
+          {post.content}
         </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-     
-       
-       
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Method:</Typography>
-          <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set
-            aside for 10 minutes.
-          </Typography>
-          
-         
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
-          <Button> <IconButton aria-label="upvote" >
+        <Button> <IconButton aria-label="upvote" >
           <ArrowCircleUpIcon />
         </IconButton>
-        Upvote</Button>
+          Upvote</Button>
         <IconButton aria-label="downvote">
           <ArrowCircleDownIcon />
         </IconButton>
-          
-        </CardContent>
-      </Collapse>
+
+      </CardContent>
     </Card>
   );
 }

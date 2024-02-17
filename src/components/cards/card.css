@@ -1,4 +1,43 @@
-.search{
-    display: flex;
+.card-content-bar {
+display: flex;
+align-items: center;
+gap: 1rem;
+
+
+
+
+}
+.card-buttons{
+    color: gray !important;
+    border-width: 15px;
+    border-color: gray;
     
 }
+.search-bar{
+    border-radius: 1px solid rgb(246,246,247) ;
+    background-color: rgb(246,246,247);
+    padding: 0.5rem 0;
+    border-radius: 35px;
+    color: rgb(149,150,153);
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+   
+}
+.divider{
+    display: flex;
+    height: 1.9rem !important;
+    align-items: center!important;
+    
+   
+    
+}
+.card-options{
+    display: flex;
+    gap: 5rem;
+    padding: 3px;
+    justify-content: center;
+    
+}
+
+
