@@ -3,6 +3,7 @@
     flex-direction: column;
     margin-right: 10px;
     flex: 0.2;
+    align-content: center;
   
 }
 
@@ -15,7 +16,7 @@
 }
 .sidebarOption:hover {
 background-color: lightgray;
-   border-radius: 5px;
+border-radius: 5px;
 }
 .sidebarOption > img {
     height: 35px;

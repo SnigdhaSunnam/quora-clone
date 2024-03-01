@@ -6,6 +6,7 @@ const getFeeds = (page) => {
 
 const PostService = {
   getFeeds,
+  
 };
 
 export default PostService;

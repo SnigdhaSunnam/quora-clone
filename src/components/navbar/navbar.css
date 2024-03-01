@@ -81,3 +81,16 @@ cursor: pointer;
     background-color: #b92b27;
 }
 
+.modal-avatar-people{
+    display: flex;
+}
+
+.button-end{
+   display: flex !important;
+   align-items: end !important;
+   justify-content: end !important;
+   margin-top: 0.5rem !important;
+}
+
+
+
