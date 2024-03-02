@@ -1,0 +1,100 @@
+
+
+.question-modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    background-color: white;
+    border-radius: 5px;
+  }
+  .css-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+      width: 50% !important;
+  }
+  /* .Add-create-tab-box{
+      width: 50% !important;
+  } */
+  
+  .addQuestion-container{
+      display: flex !important;
+      flex-direction: column !important;
+      row-gap: 15px !important;
+      
+  }
+  .instruction-Component{
+      background-color: #EBF0FF;
+      color: #2E69FF;
+      padding: 0.5rem;
+      border-radius: 3px;
+  }
+  .post-option-box{
+      display: flex !important;
+      gap: 15px;
+  }
+  .post-questionContainer{
+      min-height: 115px;
+  }
+  .btn-cancle{
+      color: #636466 !important;
+      border-radius: 50px !important;
+  }
+  .btn-cancle:hover{
+      background-color: #f7f7f7 !important;
+  }
+  .btn-cancle span{
+      text-transform: lowercase !important;
+  }
+  .select-img{
+      height: 100px;
+      width: 30%;
+  }
+  
+  .create-post-img-select{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+  }
+  .create-post-img-close-icon{
+      height: 2px !important;
+  }
+  .Add-cancle-btn-container{
+      text-align:end;
+      padding-top: 10px;
+      border-top:1px solid rgb(235, 233, 233);
+  }
+  
+  .createpost-profile-box{
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+  }
+  .create-post-pName{
+      margin: 0;
+  }
+  
+  .create-box-container{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+  }
+  .file-lang{
+      color: #636466 !important;
+      height: 30px !important;
+      width: 35px !important;
+      min-width: auto !important;
+  }
+  .file-lang:hover{
+      background-color: white !important;
+      border: 1px solid blue;
+  }
+  .translate-lang{
+      min-width: auto !important;
+  }
+  
+  .Add-post-btn-container{
+      display: flex;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top:1px solid rgb(235, 233, 233);
+  }

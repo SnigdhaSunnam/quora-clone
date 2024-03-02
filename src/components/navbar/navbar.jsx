@@ -14,14 +14,8 @@ import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { deepOrange} from '@mui/material/colors';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+
+import QuestionModal from '../questionModal/questionModal';
 
 
 const style = {
@@ -95,49 +89,18 @@ const handleChange = (event: React.SyntheticEvent, newValue: string) => {
           <button className='add-question'onClick={handleOpen} >Add Question</button>
 
         </Box>
+        
       </Toolbar>
-
+      <Modal
+                            open={open}
+                            onClose={handleClose}
+                         
+                        >
+                            <QuestionModal handleClose={handleClose}/>
+                        </Modal>
      
-      <Modal className='addquestion-modal' open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
-        <Box sx={style} className = 'modal-title'>
-        <Box value={value}>
-</Box>
-        <IconButton onClick={handleClose} sx={{m:0.5}}> <CloseRoundedIcon /></IconButton>
-          <Typography id="modal-top-button" variant="h6" component="h2">
-            <Tabs value={value} onChange={handleChange} className="Add-create-tab-box">
-              <Tab label="Add Question" {...a11yProps(0)} />
-              <Tab label="Create Post" {...a11yProps(1)} />
-            </Tabs>         
-          </Typography>
-          <Box className="addQuestion-tab">
-          <CustomTabPanel value={value} index={0}>
-            <Typography  sx={{ mt: 2 }}>
-            <b>Tips on getting good answers quickly</b>
-            <ol style={{ listStyleType: 'disc' }}>
-                <li> Make sure your question has not been asked already</li>
-                <li> Keep your question short and to the point</li>
-                <li> Double-check grammar and spelling</li>
-              </ol>
-            </Typography>
-            
-          
-          </CustomTabPanel>
-          <Box className='modal-avatar-people' >
-            <Avatar sx={{ bgcolor: deepOrange[500] }}>S</Avatar><Button><PeopleOutlineIcon/>Public<ExpandMoreIcon/> </Button></Box>
-            <TextField fullWidth   variant="standard"  size="small" placeholder="What would you like to be called?"  sx={{mt:0.5}}  />
-          </Box>
-        
-          
-
-          <Box className="button-end">
-            <Button autoFocus onClick={handleClose}>Cancel</Button>
-            <Button variant="contained"  sx={{borderRadius:50,backgroundColor:"#96B4FF"}} type="button" > AddQuestion </Button>
-          </Box>
-
-          <Box className="createpost-container"></Box>
-          </Box>
-        
-      </Modal>
+     
+      
     </>
   )
 }
