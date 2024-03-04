@@ -17,8 +17,9 @@ import TextField from '@mui/material/TextField';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import postService from "../../service/postService";
-import FormatBoldIcon from '@mui/icons-material/FormatBold';
-import CollectionsIcon from '@mui/icons-material/Collections';
+import { PiTextAaBold } from "react-icons/pi";
+import { GrGallery } from "react-icons/gr";
+import { UserContext } from "../../contexts/user-context";
 
 const validationAddQuestion = yup.object({
     question:yup.string().trim().required(),
@@ -66,6 +67,7 @@ function QuestionModal({handleClose,getFeeds}){
     const [file, setFile] = useState();
     const [uploadedFileURL, setUploadedFileURL] = useState(null);
     const [value, setValue] = useState(0);
+    const {userDetail} = useContext(UserContext);
     
 
     const handleChange = (event, newValue) => {
@@ -179,7 +181,7 @@ function QuestionModal({handleClose,getFeeds}){
                         <Box className="createpost-profile-box">
                         <Avatar sx={{ bgcolor: deepOrange[500] }}>S</Avatar>
                         <Box>
-                                <h4 className="create-post-pName"></h4>
+                                <h4 className="create-post-pName">{userDetail.name}</h4>
                                 <Button variant="outlined" className="try-quora-btn">C<span>hoose credential</span></Button>
                             </Box>
                         </Box>
@@ -205,10 +207,10 @@ function QuestionModal({handleClose,getFeeds}){
                         <Box className="add-post-btn-container">
                             <Box>
                                 <Button variant="text" className="translate-lang file-lang" >
-                                    <FormatBoldIcon fontSize={30} />
+                                    <PiTextAaBold fontSize={30} />
                                 </Button>
                                 <Button variant="text" className="file-btn file-lang"  >
-                                    <CollectionsIcon fontSize={30} onClick={triggerFileUpload}/>
+                                    <GrGallery fontSize={30} onClick={triggerFileUpload}/>
                                     <input hidden accept="image/*" ref={inputFileRef} type="file" onChange={handleFileUpload} />
                                 </Button>
                             </Box>
