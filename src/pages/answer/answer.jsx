@@ -1,42 +1,30 @@
-import './answer.css';
-
-import { Box } from '@mui/material';
-import Navbar from '../../components/navbar/navbar';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import StarsIcon from '@mui/icons-material/Stars';
-
-
-
-
-function Answer() {
-  return <Box className = 'answer-navbar' sx= {{overflow: 'auto hidden'}}>
-    <Navbar />
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <StarsIcon />
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Questions for you
-        </Typography>
-       
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      </Card> 
-        
-       
-       
-  </Box>;
-  
-
+import { Box,Container } from "@mui/material"
+import AnswerCard from "../../components/answercard/answercard"
+import Grid from '@mui/material/Unstable_Grid2';
+import './answer.css'
+function Answer(){
+    return(
+        <Container className="Answer-container-wrapper">
+            <Grid container spacing={2} className="Answer-container">
+                <Grid xs={2.5} className="">
+                    <Box >
+                        <Box><b>Questions</b></Box>
+                        <Box className="question-side">Questions for you</Box>
+                        <Box className="question-side">Answer requests</Box>
+                        <Box className="question-side">Draft</Box>
+                    </Box>
+                </Grid>
+                <Grid xs={6} className="">
+                    <AnswerCard/>
+                </Grid>
+                <Grid xs={3.5}>
+                    Advertisement
+                </Grid>
+            </Grid>
+            
+            
+        </Container>
+    )
 }
 
-export default Answer;
+export default Answer

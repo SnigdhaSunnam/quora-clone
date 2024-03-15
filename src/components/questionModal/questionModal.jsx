@@ -155,6 +155,7 @@ function QuestionModal({handleClose,getFeeds}){
                         <Box className="post-questionContainer">
                             <Input placeholder='Start your question with "What", "How", "Why", etc.' fullWidth
                                 name="question"
+
                                 value={qformik.values.question}
                                 onChange={qformik.handleChange}
                                 onBlur={qformik.handleBlur}
@@ -181,7 +182,7 @@ function QuestionModal({handleClose,getFeeds}){
                         <Box className="createpost-profile-box">
                         <Avatar sx={{ bgcolor: deepOrange[500] }}>S</Avatar>
                         <Box>
-                                <h4 className="create-post-pName">{userDetail.name}</h4>
+                                <h4 className="create-post-pName">{userDetail?.name}</h4>
                                 <Button variant="outlined" className="try-quora-btn">C<span>hoose credential</span></Button>
                             </Box>
                         </Box>
