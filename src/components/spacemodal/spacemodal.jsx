@@ -3,10 +3,10 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import "./spaceModal.css";
+import "./spacemodal.css";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import postService from "../../service/PostService";
+import postService from "../../service/postService";
 import { GrGallery } from "react-icons/gr";
 import { useRef,useState } from "react";
 

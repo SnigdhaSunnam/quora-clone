@@ -4,8 +4,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 
 import { useEffect, useState } from "react";
 import postService from "../../service/postService";
-import Spacecard from "../../components/spacecard/spacecard";
-import Spacemodal from "../../components/spacemodal/spacemodal";
+import SpaceCard from "../../components/spacecard/spacecard";
+import SpaceModal from "../../components/spacemodal/spacemodal";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 
@@ -25,7 +25,7 @@ function Space(){
         getChannel();
     },[pages])
     const getChannel =()=>{
-       /* postService.getSpace(pages,limit).then((res)=>{
+        postService.getSpace(pages,limit).then((res)=>{
             if(pages==0){
                 setChannels(res?.data.data)
             }else{
@@ -36,7 +36,7 @@ function Space(){
             if(res.data.results != 10 || res.data?.reults < 10){
                 setNextpage(false);
             }
-        })*/
+        })
     } 
     const fetchMoreData = () => {
         setPages((prev)=>prev+1)
@@ -73,7 +73,7 @@ function Space(){
                             <Box className="channel-container">
                                 {
                                     channels.map((channel,key)=>(
-                                        <Spacecard channel={channel} key={key} />
+                                        <SpaceCard channel={channel} key={key} />
                                     ))
                                 }
                             </Box>
@@ -93,7 +93,7 @@ function Space(){
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Spacemodal handleClose={handleClose} getChannel={getChannel}/>
+            <SpaceModal handleClose={handleClose} getChannel={getChannel}/>
         </Modal>
     </Container>
     </>)

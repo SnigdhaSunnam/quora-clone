@@ -1,9 +1,10 @@
 import { Box, Button, Container, Grid, Icon, Typography } from "@mui/material";
 import CardMedia from '@mui/material/CardMedia';
-import "./groupPage.css"
-import Cards from "../../Components/Cards";
+import "./grouppage.css"
+import Feedcard from "../../components/feedcard/feedcard";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+
 import postService from "../../service/postService";
 import { FaInstagram } from "react-icons/fa6";
 
@@ -49,7 +50,7 @@ function GroupPage(){
         }
         setFollow(!follow);
     }
-    
+   
 
     return(
         <Container className="group-page-container">
@@ -61,15 +62,18 @@ function GroupPage(){
                             image={channelDetail.image}
                             alt="channelImg"
                             className="group-cover-img"
+                           
                         />
                         <CardMedia
                             component="img"
                             sx={{width:90}}
                             height="90"
                             image={channelDetail.image}
+                        
                             alt="channelImg"
                             className='group-img'
                         />
+ 
                         <Box className="group-content-container">
                             <Box>
                                 <Typography gutterBottom variant="h5" component="div" fontSize={18}>
@@ -81,6 +85,7 @@ function GroupPage(){
                             </Box>
                             <Box className="channel-follow-btn">
                                 <Button startIcon={<FaInstagram />} className={`${follow?"follow-btn" : "follow-btn-yellow"}`} onClick={followAndUnfollow}>{follow?("following"):("follow space")}</Button>
+                                
                             </Box>
                         </Box>
                     </Box>
@@ -91,7 +96,7 @@ function GroupPage(){
                     {
                         channelPosts.map((post,key)=>(
                             <Box className="channelpost-container">
-                                <Cards feed={post} key={key}/>
+                                <Feedcard feed={post} key={key}/>
                             </Box>
                         ))
                     }

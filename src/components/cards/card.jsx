@@ -40,9 +40,9 @@ function Cards() {
    
   const [value, setValue] = React.useState('1');
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-  };   
+  // const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  //   setValue(newValue);
+  // };   
           
   return (
     <Box  className = 'card' sx={{ minWidth: 500, width:700 }}>

@@ -22,17 +22,18 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import { deepOrange } from '@mui/material/colors';
 
+
 export default function Feedcard({ post }) {
   return (
     <Card className='feedcard-oneAvatar' sx={{ minWidth: 500, width: 700, }}>
       <CardHeader
         avatar={
           <Avatar >
-          {post.author.profileImage && 
-            <img src={post.author.profileImage} ></img>
+          {post?.author?.profileImage && 
+            <img src={post?.author?.profileImage} ></img>
           }
-          {!post.author.profileImage && 
-            <span>{post.author.name[0]}</span>
+          {!post?.author?.profileImage && 
+            <span>{post?.author?.name[0]}</span>
           }
           </Avatar>
         }
@@ -41,7 +42,7 @@ export default function Feedcard({ post }) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={post.author.name}
+        title={post?.author?.name}
         subheader="September 14, 2016"
       />
       <CardContent className='paellaDish'><img src={post.images[0]} ></img></CardContent>
@@ -58,6 +59,7 @@ export default function Feedcard({ post }) {
         <IconButton aria-label="downvote">
           <ArrowCircleDownIcon />
         </IconButton>
+       
 
       </CardContent>
     </Card>
