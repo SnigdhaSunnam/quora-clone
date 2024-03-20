@@ -2,12 +2,12 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
-import postService from '../../service/PostService';
+import postService from '../../service/postService';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { red } from '@mui/material/colors';
-import "./Cards.css"
+
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from '../../contexts/user-context';
 import Menu from '@mui/material/Menu';
@@ -70,7 +70,7 @@ function CommentCardD({ feed, comment, getComments }) {
                         {comment.content}
                     </Typography>
                     {
-                        (userDetail._id == comment.author) &&
+                        (userDetail?._id == comment.author) &&
                         <Box>
                             <IconButton
                                 aria-label="more"
@@ -79,6 +79,7 @@ function CommentCardD({ feed, comment, getComments }) {
                                 aria-expanded={open ? 'true' : undefined}
                                 aria-haspopup="true"
                                 onClick={handleClick}
+                                style={{ color: '#000', padding: '8px' }}
                             >
                                 <BsThreeDots />
                             </IconButton>

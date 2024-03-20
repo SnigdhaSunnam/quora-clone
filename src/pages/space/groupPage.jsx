@@ -27,9 +27,12 @@ function GroupPage(){
     }
     const getChannelPosts =()=>{
         postService.getChannelPost(id).then((res)=>{
-            setChannelPosts(res.data.data);
+            const data = res.data.data;
+            let channelPost = data.filter((data)=> data != null);
+            setChannelPosts(channelPost);
         })
     }
+
 
     const follows =()=>{
         postService.follow(id).then((res)=>{
@@ -97,6 +100,7 @@ function GroupPage(){
                         channelPosts.map((post,key)=>(
                             <Box className="channelpost-container">
                                 <Feedcard feed={post} key={key}/>
+
                             </Box>
                         ))
                     }

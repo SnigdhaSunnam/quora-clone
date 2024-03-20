@@ -11,7 +11,7 @@ function Home() {
         <Sidebar /> 
         
        <Feed />
-      
+    
        </Box>
   </Box>;
   

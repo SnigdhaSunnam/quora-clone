@@ -30,7 +30,7 @@ function Feed() {
         {posts.map((post) => {
             return(
             
-                <Feedcard post={post}/>
+                <Feedcard feed={post}/>
                 
 
             )

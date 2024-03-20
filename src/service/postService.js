@@ -89,4 +89,4 @@ const postService = {
     search
 }
 
-export default postService
+export default postService;

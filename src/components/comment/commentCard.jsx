@@ -1,8 +1,8 @@
 import Avatar from '@mui/material/Avatar';
-import postService from '../../service/PostService';
+import postService from '../../service/postService';
 import Box from '@mui/material/Box';
 import { red } from '@mui/material/colors';
-import "./Cards.css"
+import './Comment.css';
 import { useContext, useState } from "react";
 import { UserContext } from '../../contexts/user-context';
 import Button from '@mui/material/Button';
