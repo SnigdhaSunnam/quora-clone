@@ -6,7 +6,7 @@ import Feed from '../../components/feed/feed';
 
 
 function Home() {
-  return <Box className = 'home' sx= {{overflow: 'auto hidden'}}><Navbar />
+  return <Box className = 'home' sx= {{overflow: 'auto hidden'}}>
        <Box className ='quora-content'>
         <Sidebar /> 
         
