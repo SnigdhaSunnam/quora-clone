@@ -5,7 +5,7 @@ import google from '../../assets/images/google icon.png';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import fbicon from '../../assets/images/Facebook-f_Logo-Blue-Logo.wine.svg';
 import Link from '@mui/material/Link';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import QuoraLogo from '../../assets/images/quora-logo.png';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -13,10 +13,13 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import SignupModal from '../../components/modal/modal';
 import authService from "../../service/authService";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../contexts/user-context";
 
 
 
 const Auth = () => {
+    const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const handleClickOpen = () => {  
         setOpen(true);
@@ -24,6 +27,7 @@ const Auth = () => {
     const handleClose = () => {
         setOpen(false);
     };
+    const {setUserDetail} = useContext(UserContext);
     function handleClick(event) {
         event.preventDefault();
         console.info('You clicked a breadcrumb.');
@@ -54,6 +58,7 @@ const formik = useFormik({
 })
 const handleLogin = (values) => {
     authService.login(values.email, values.password).then((res) => {
+        localStorage.setItem('userDetail', JSON.stringify(res?.data?.data))
         localStorage.setItem('token', res?.data?.token)
         setTimeout(() => {
            
@@ -91,7 +96,7 @@ const handleLogin = (values) => {
                                         <TextField id="outlined-password-input" type="password" autoComplete="current-password" placeholder="your password"  name="password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur} error={formik.touched.password && Boolean(formik.errors.password)} helperText={formik.touched.password && formik.errors.password} />
                                     </Box>
                                     <Box className="forget-login-button">
-                                        <Link>Forgot Password?</Link>
+                                        <Link href="javascript: void(0)">Forgot Password?</Link>
                                         <Button label="Login" size="medium" variant="contained" type="Button" onClick={formik.handleSubmit}>Login</Button>
                                     </Box>
                                 </Box>
