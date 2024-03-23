@@ -1,8 +1,7 @@
 import { Box } from "@mui/material";
 import { useContext } from "react";
-import pfImg from "../../Assets/profileImg.webp"
+import pfImg from "../../assets/profileimg.jpg"
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import { UserContext } from "../../contexts/user-context";
 import "./user.css"
 
