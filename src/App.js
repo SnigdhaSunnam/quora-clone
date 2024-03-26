@@ -19,8 +19,9 @@ function App() {
     <Routes>
     
       <Route path='/auth' Component={Auth}></Route>
-      <Route path='/' element={
-              <Layout /> } >
+      <Route path='/' element={ <Protected >
+              <Layout />  </Protected>} >
+
             
       <Route path='/home' Component={Home}></Route>
       <Route path='/answer' Component={Answer}></Route>
