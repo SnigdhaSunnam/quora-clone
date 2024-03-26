@@ -18,13 +18,13 @@ function App() {
     <UserContextProvider>
     <Routes>
     
-      <Route path='auth' Component={Auth}></Route>
+      <Route path='/auth' Component={Auth}></Route>
       <Route path='/' element={
               <Layout /> } >
             
-      <Route path='home' Component={Home}></Route>
-      <Route path='answer' Component={Answer}></Route>
-      <Route path='space' Component={Space}></Route>
+      <Route path='/home' Component={Home}></Route>
+      <Route path='/answer' Component={Answer}></Route>
+      <Route path='/space' Component={Space}></Route>
       <Route path='/group/:id' element={<GroupPage />} />
       <Route path='/following' element={<Following />} />
       <Route path='/notifications' element={<Notification />} />

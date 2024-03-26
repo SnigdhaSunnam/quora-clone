@@ -11,8 +11,8 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import SignupModal from '../../components/modal/modal';
-import authService from "../../service/authService";
+import SignUpModal from '../../components/modal/modal';
+import AuthService from "../../service/authService";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/user-context";
 
@@ -21,6 +21,8 @@ import { UserContext } from "../../contexts/user-context";
 const Auth = () => {
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
+    
+
     const handleClickOpen = () => {  
         setOpen(true);
     };
@@ -37,7 +39,6 @@ const Auth = () => {
         <Link key={index} underline="hover" color="inherit" href={item.href} onClick={handleClick} > {item.text} </Link>
     ));
     const validationSignUpSchema = yup.object({
-        name:yup.string().trim().min(2,"Your name needs to be at least 2 characters long.").required("name is required"),
         email:yup.string().email("The email address you entered is not valid.").required("email is required"),
         password:yup.string().min(5, 'Password should be of minimum 5 characters length').required('Password is required').trim()
 });
@@ -57,11 +58,12 @@ const formik = useFormik({
 
 })
 const handleLogin = (values) => {
-    authService.login(values.email, values.password).then((res) => {
+    AuthService.login(values.email, values.password).then((res) => {
         localStorage.setItem('userDetail', JSON.stringify(res?.data?.data))
         localStorage.setItem('token', res?.data?.token)
+        setUserDetail(res.data.data)
         setTimeout(() => {
-           
+            navigate('/home');
         }, 100);
     })
 }
@@ -105,6 +107,9 @@ const handleLogin = (values) => {
                         </Box>
                         <BottomNavigation className="about-quora">
                             <Breadcrumbs separator="•" aria-label="breadcrumb"> {breadcrumbs}</Breadcrumbs>
+                        
+                   
+                
                         </BottomNavigation>
                         <Modal
                             open={open}
@@ -112,7 +117,7 @@ const handleLogin = (values) => {
                             aria-labelledby="modal-modal-title"
                             aria-describedby="modal-modal-description"
                         >
-                            <SignupModal handleClose={handleClose}/>
+                            <SignUpModal handleClose={handleClose}/>
                         </Modal>
                         
                     </Box>

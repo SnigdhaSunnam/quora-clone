@@ -1,7 +1,6 @@
 import "./space.css";
 import {Container, Box , Button, Modal} from "@mui/material";
-import Grid from '@mui/material/Unstable_Grid2';
-
+import Grid from '@mui/material/Unstable_Grid2';              
 import { useEffect, useState } from "react";
 import postService from "../../service/postService";
 import SpaceCard from "../../components/spacecard/spacecard";
@@ -18,7 +17,6 @@ function Space(){
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    
     var limit = 10;
 
     useEffect(()=>{
@@ -55,7 +53,7 @@ function Space(){
                     <Box fontSize="large">Welcome to Spaces!</Box>
                     <Box fontSize="small">Follow Spaces to explore your interests on Quora.</Box>
                     <Box className="space-btn-container">
-                        <Button variant="outlined" className="create-space-btn space-btn" >C<span>reate a spaces</span></Button>
+                        <Button variant="outlined" className="create-space-btn space-btn" onClick={handleOpen} >C<span>reate a spaces</span></Button>
                         <Button variant="outlined" className="discover-space-btn space-btn">D<span>iscover spaces</span></Button>
                     </Box>
                </Box>

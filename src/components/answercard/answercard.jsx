@@ -5,7 +5,7 @@ import { HiOutlinePencilAlt } from "react-icons/hi";
 import "./answercard.css"
 
 
-function AnswerCard(){
+function AnswerCard({question}){
     return(
         <>
         <Box className="Answer-card-wrapper">

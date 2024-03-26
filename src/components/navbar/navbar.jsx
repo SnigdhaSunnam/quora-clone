@@ -1,4 +1,4 @@
-import { Box, TextField, Button, AppBar, Input} from '@mui/material';
+import { Box } from '@mui/material';
 import QuoraLogo from '../../assets/images/quora-logo.png';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
@@ -6,12 +6,10 @@ import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
 import Groups2OutlinedIcon from '@mui/icons-material/Groups2Outlined';
 import Toolbar from '@mui/material/Toolbar';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import Avatar from '@mui/material/Avatar';
 import LanguageIcon from '@mui/icons-material/Language';
 import '../navbar/navbar.css';
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { deepOrange} from '@mui/material/colors';
 import { styled, alpha } from '@mui/material/styles';
@@ -144,11 +142,11 @@ function Navbar() {
       <Toolbar className="navbar" position='static'>
         <Box className='header-logo'><img src={QuoraLogo}></img></Box>
         <Box className='header-icons' value={value} onChange={handleChange}>
-          <Box className='header-icon'><HomeOutlinedIcon /></Box>
-          <Box className='header-icon'><ListAltOutlinedIcon /></Box>
-          <Box className='header-icon'><RateReviewOutlinedIcon /></Box>
-          <Box className='header-icon'><Groups2OutlinedIcon /></Box>
-          <Box className='header-icon'><NotificationsNoneOutlinedIcon /></Box>
+          <Box className='header-icon' onClick={()=>navigate("/home")}><HomeOutlinedIcon /></Box>
+          <Box className='header-icon' onClick={()=>navigate("/following")}><ListAltOutlinedIcon /></Box>
+          <Box className='header-icon' onClick={()=>navigate("/answer")}><RateReviewOutlinedIcon /></Box>
+          <Box className='header-icon' onClick={()=>navigate("/space")} ><Groups2OutlinedIcon /></Box>
+          <Box className='header-icon'   onClick={()=>navigate("/notifications")} ><NotificationsNoneOutlinedIcon /></Box>
         </Box>
         <Box className='header-input'>
           <Box>
@@ -185,10 +183,12 @@ function Navbar() {
                     aria-expanded={open ? 'true' : undefined}
                   >
           <Box className='header-avatar' ><Avatar sx={{ bgcolor: deepOrange[500] }}>{userDetail?.name.charAt(0).toUpperCase()}</Avatar></Box>
-          <LanguageIcon />
+      
       
           </IconButton>
+          
                 </Tooltip>
+                <LanguageIcon />
               
 
         </Box>
@@ -217,11 +217,11 @@ function Navbar() {
         
       </Toolbar>
       <Modal
-                            open={open}
+                            open={questionOpen}
                             onClose={handleQuestionClose}
                          
                         >
-                            <QuestionModal handleClose={handleClose}/>
+                            <QuestionModal handleClose={handleQuestionClose}/>
                         </Modal>
      
      

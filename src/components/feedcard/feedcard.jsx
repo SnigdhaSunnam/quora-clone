@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Button, Box } from '@mui/material';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';

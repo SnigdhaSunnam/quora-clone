@@ -7,6 +7,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import AuthService from "../../service/authService";
+import { useNavigate } from "react-router-dom";
 
 const validationSignUpSchema = yup.object({
         name:yup.string().trim().min(2,"Your name needs to be at least 2 characters long.").required("name is required"),
@@ -14,6 +15,7 @@ const validationSignUpSchema = yup.object({
         password:yup.string().min(5, 'Password should be of minimum 5 characters length').required('Password is required').trim()
 });
 function SignUpModal({handleClose}){
+    const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -31,6 +33,10 @@ function SignUpModal({handleClose}){
         AuthService.signUp(values.name, values.email, values.password).then((res) => {
             console.log(res)
         })
+        setTimeout(() => { 
+            navigate('/auth');
+            handleClose(); 
+        }, 100);
     }
 
     return(
